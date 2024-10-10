@@ -32,11 +32,35 @@ public class ArraysAndStreams2 {
                .filter(s -> s.compareToIgnoreCase("n") < 0)
                .sorted(String.CASE_INSENSITIVE_ORDER.reversed())
                .collect(Collectors.toList()));
+
+
+      //New and added stream operations
+
+      //filter strings starting with vowel
+      System.out.printf("%nStrings starting with a vowel: %s%n",
+              Arrays.stream(strings)
+                      .filter(s -> s.toLowerCase().matches("^[aeiou].*"))
+                      .collect(Collectors.toList()));
+
+      //put all strings into one - seperate by comma
+
+      String concatenatedStrings =
+              Arrays.stream(strings)
+                      .collect(Collectors.joining(","));
+      System.out.printf("%nCOncatenated strings: %s%n", concatenatedStrings);
+
+      //count amount of strings containing over 5 characters
+
+      long countContainOverFive =
+              Arrays.stream(strings)
+                      .filter(s -> s.length() > 5)
+                      .count();
+      System.out.printf("%nNumber of strings with over 5 characters: %d%n",countContainOverFive);
    }
 } 
 
 
-/**************************************************************************
+/* *************************************************************************
  * (C) Copyright 1992-2018 by Deitel & Associates, Inc. and               *
  * Pearson Education, Inc. All Rights Reserved.                           *
  *                                                                        *
